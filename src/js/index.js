@@ -1,17 +1,26 @@
 "use strict";
 
-import {getLyrics} from "./songAPI.js";
+import { getLyrics } from "./songAPI.js";
 
 
-function searchForSong()
-{
-    const artist = document.getElementById("searchInputArtist").value;
-    const song = document.getElementById("searchInputSong").value;
+function searchForSong() {
+    let artist;
+    let song;
 
-    let ouputDiv = document.getElementById("searchOuputDiv");
+    let outputDiv = document.getElementById("outputDiv");
 
-
-    getLyrics(artist,song);
+    if (artist = document.getElementById("searchInputArtist").value) {
+        if (song = document.getElementById("searchInputSong").value) {
+            getLyrics(artist, song);
+        }
+        else{
+            outputDiv.innerHTML="Please enter a song";
+        }
+    }
+    else if(song = document.getElementById("searchInputSong").value){
+        getLyrics("a", song);
+    }
+    
 }
 
 window.searchForSong = searchForSong;

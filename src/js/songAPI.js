@@ -13,8 +13,14 @@ export function getLyrics(artist, song) {
     let lyricsPromise = Promise.resolve(getRawLyrics(artist, song));
     let lyricsString;
     lyricsPromise.then((jsonObject) => {
-        lyricsString = jsonObject.lyrics;
-        lyricsString = lyricsString.replace(/\n/g,"<br>");
+        if (lyricsString = jsonObject.lyrics) {
+            lyricsString = jsonObject.lyrics;
+            lyricsString = lyricsString.replace(/\n/g, "<br>");
+        }
+        else {
+            lyricsString = "";
+        }
+        
         document.getElementById("outputDiv").innerHTML = lyricsString;
     })
 }
